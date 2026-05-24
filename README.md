@@ -6,4 +6,4 @@
 
 [Demo per l'interazione con il database in Java](Main.java)
 
-<img width="800" height="500" alt="video demo" src="https://github.com/user-attachments/assets/dbba16a0-f8b2-411d-9a8e-3f54ce82e2d1" />
+<img width="2880" height="1800" alt="demo" src="https://github.com/user-attachments/assets/c4e3e039-26e6-4e09-aaaf-258ab4df3ab7" />
