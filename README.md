@@ -4,6 +4,5 @@
 
 [Query per la creazione del database](queryDDL.pdf)
 
-[Video Demo](https://youtu.be/4pYGt37SNw0)
-
 [Demo per l'interazione con il database in Java](Main.java)
+https://github.com/user-attachments/assets/bbe66419-e22c-4549-bae0-079cd96049fb
