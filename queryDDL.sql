@@ -12,7 +12,7 @@ CREATE TABLE `Adozione` (
   CONSTRAINT `adozione_ibfk_1` FOREIGN KEY (`Gatto`) REFERENCES `Gatto` (`Microchip`),
   CONSTRAINT `adozione_ibfk_2` FOREIGN KEY (`Cliente`) REFERENCES `Cliente` (`IDCliente`),
   CONSTRAINT `adozione_ibfk_3` FOREIGN KEY (`Responsabile`) REFERENCES `Dipendente` (`CodiceFiscale`)
-)
+);
 
 CREATE TABLE `Cliente` (
   `IDCliente` int NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE `Cliente` (
   `Cognome` varchar(100) DEFAULT NULL,
   `Contatto` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`IDCliente`)
-)
+);
 
 CREATE TABLE `DettaglioScontrino` (
   `Scontrino` int NOT NULL,
@@ -31,15 +31,16 @@ CREATE TABLE `DettaglioScontrino` (
   KEY `Prodotto` (`Prodotto`),
   CONSTRAINT `dettaglioscontrino_ibfk_1` FOREIGN KEY (`Scontrino`) REFERENCES `Scontrino` (`IDScontrino`),
   CONSTRAINT `dettaglioscontrino_ibfk_2` FOREIGN KEY (`Prodotto`) REFERENCES `Prodotto` (`IDProdotto`)
-)
+);
 
 CREATE TABLE `Dipendente` (
   `CodiceFiscale` char(16) NOT NULL,
   `Nome` varchar(100) DEFAULT NULL,
   `Cognome` varchar(100) DEFAULT NULL,
   `Ruolo` varchar(9) DEFAULT NULL,
+  CONSTRAINT chk_ruolo_dipendente CHECK (Ruolo IN ("Impiegato", "Manager")),
   PRIMARY KEY (`CodiceFiscale`)
-)
+);
 
 CREATE TABLE `Gatto` (
   `Microchip` bigint NOT NULL,
@@ -53,7 +54,7 @@ CREATE TABLE `Gatto` (
   `PresenzaInSala` tinyint(1) DEFAULT NULL,
   `StatoAdottabilità` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`Microchip`)
-)
+);
 
 CREATE TABLE `Prenotazione` (
   `IDPrenotazione` int NOT NULL,
@@ -65,14 +66,14 @@ CREATE TABLE `Prenotazione` (
   PRIMARY KEY (`IDPrenotazione`),
   KEY `Tavolo` (`Tavolo`),
   CONSTRAINT `prenotazione_ibfk_1` FOREIGN KEY (`Tavolo`) REFERENCES `Tavolo` (`NumeroTavolo`)
-)
+);
 
 CREATE TABLE `Prodotto` (
   `IDProdotto` int NOT NULL,
   `Nome` varchar(255) DEFAULT NULL,
   `Prezzo` decimal(5,2) DEFAULT NULL,
   PRIMARY KEY (`IDProdotto`)
-)
+);
 
 CREATE TABLE `Scontrino` (
   `IDScontrino` int NOT NULL,
@@ -85,14 +86,14 @@ CREATE TABLE `Scontrino` (
   KEY `Tavolo` (`Tavolo`),
   CONSTRAINT `scontrino_ibfk_1` FOREIGN KEY (`Operatore`) REFERENCES `Dipendente` (`CodiceFiscale`),
   CONSTRAINT `scontrino_ibfk_2` FOREIGN KEY (`Tavolo`) REFERENCES `Tavolo` (`NumeroTavolo`)
-)
+);
 
 CREATE TABLE `Tavolo` (
   `NumeroTavolo` int NOT NULL,
   `Capacità` int DEFAULT NULL,
   `Stato` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`NumeroTavolo`)
-)
+);
 
 CREATE TABLE `Visita` (
   `IDVisita` int NOT NULL,
@@ -104,4 +105,4 @@ CREATE TABLE `Visita` (
   PRIMARY KEY (`IDVisita`),
   KEY `Gatto` (`Gatto`),
   CONSTRAINT `visita_ibfk_1` FOREIGN KEY (`Gatto`) REFERENCES `Gatto` (`Microchip`)
-)
+);
